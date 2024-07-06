@@ -1,0 +1,82 @@
+
+### Project Explanation
+
+#### Project Overview
+This project demonstrates the integration of Snowflake with Apache Spark using PySpark within AWS Glue. It involves uploading JDBC and Snowflake Spark connector files and writing PySpark code to interact with Snowflake tables.
+
+#### Project Components
+1. **JDBC Snowflake Connector**:
+   - **File Name**: `snowflake-jdbc-3.13.15`
+   - **Description**: Contains configurations and dependencies for connecting Snowflake with JDBC.
+
+2. **Snowflake Spark Connector**:
+   - **File Name**: `spark-snowflake_2.12-2.9.2-spark_3.1`
+   - **Description**: Includes Spark configurations and libraries necessary for Spark-Snowflake integration.
+
+3. **PySpark Code**:
+   - **File Name**: 'gluejobforsnowflake'
+   - **Description**: PySpark script executed within AWS Glue to query Snowflake data and perform data operations.
+
+#### PySpark Code Explanation
+```python
+from pyspark.sql import SparkSession
+
+# Initialize Spark session
+spark = SparkSession \
+    .builder\
+    .appName("Snowflake Integration")\
+    .getOrCreate()
+
+# Snowflake connection parameters
+SNOWFLAKE_SOURCE_NAME = "net.snowflake.spark.snowflake"
+snowflake_database = ""
+snowflake_schema = ""
+snowflake_table_name = ""
+snowflake_option = {
+    "sfUrl" : " ",
+    "sfUser" :" ",
+    "sfPassword" : "" ,
+    "sfdatabase": snowflake_database,
+    "sfschema": snowflake_schema,
+    "sfWarehouse": ""
+}
+
+# Read data from Snowflake table
+df = spark.read.format(SNOWFLAKE_SOURCE_NAME) \
+    .option(**snowflake_option) \
+    .option("dbtable", snowflake_table_name) \
+    .option("autopush", "on") \
+    .load()
+
+# Example SQL query
+sql_query = """ 
+select * from table 
+"""
+
+# Execute SQL query and write back to Snowflake
+df.write.format("snowflake") \
+    .option(**snowflake_option) \
+    .option("dbtable", "output") \
+    .mode("overwrite") \
+    .save()
+
+# Stop Spark session
+spark.stop()
+```
+
+#### Usage Instructions
+1. **Upload JDBC Snowflake Connector**:
+   - Ensure `jdbc_snowflake_connector.jar` is uploaded to AWS Glue to establish JDBC connectivity with Snowflake.
+
+2. **Upload Snowflake Spark Connector**:
+   - Upload `snowflake_spark_connector.jar` to AWS Glue for Spark-Snowflake integration and data operations.
+
+3. **Execute PySpark Script**:
+   - Modify Snowflake connection details (`sfUrl`, `sfUser`, `sfPassword`, `sfdatabase`, `sfschema`, `sfWarehouse`) in `snowflake_integration.py`.
+   - Run the script within AWS Glue to read data from Snowflake tables, perform operations, and write results back to Snowflake.
+
+#### Conclusion
+This project showcases the seamless integration of Snowflake with Apache Spark using PySpark within AWS Glue. By leveraging AWS Glue's ETL capabilities and Spark's processing power, data can be efficiently retrieved, transformed, and stored back into Snowflake, enabling robust data analytics and insights.
+
+---
+
