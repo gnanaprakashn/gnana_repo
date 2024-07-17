@@ -1,4 +1,4 @@
-Sure! Here is a README file that covers your completed projects.
+
 
 ---
 
@@ -11,15 +11,15 @@ This document provides an overview of three key projects I have completed, showc
 
 ### 1. Analysis of Snowflake Data using PySpark Script in AWS Glue
 - **Description:** This project involves analyzing data stored in Snowflake using PySpark scripts executed within AWS Glue.
-- **First Commit:** Last week
+
 
 ### 2. Auto Data Ingestion using Snowflake
 - **Description:** This project focuses on automating the ingestion of data into Snowflake, ensuring efficient and streamlined data processing workflows.
-- **First Commit:** Last week
+
 
 ### 3. Data Analysis with Athena and Quicksight
 - **Description:** This project involves performing data analysis using AWS Athena for querying data and AWS Quicksight for visualization and insights.
-- **First Commit:** Last week
+
 
 ## Skills and Technologies Used
 - **AWS Glue:** Managed ETL service for data preparation and transformation.
@@ -33,4 +33,3 @@ For more details about these projects or to discuss potential collaboration oppo
 
 ---
 
-This README file can be saved as `README.txt` in the root directory of your project portfolio.
