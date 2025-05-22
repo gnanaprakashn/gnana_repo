@@ -24,14 +24,21 @@ api_params = {
 }
 
 def extract_openweather_data(**kwargs):
-    print("Extracting started ")
-    ti = kwargs['ti']
-    response = requests.get(api_endpoint, params=api_params)
-    data = response.json()
-    print(data)
-    df = pd.json_normalize(data['list'])
-    print(df)
-    ti.xcom_push(key='final_data', value=df.to_csv(index=False))
+    try :
+
+        print("Extracting started ")
+        ti = kwargs['ti']
+        response = requests.get(api_endpoint, params=api_params)
+        data = response.json()
+        print(data)
+        df = pd.json_normalize(data['list'])
+        print(df)
+        ti.xcom_push(key='final_data', value=df.to_csv(index=False))
+        ti.xcom_push(key='task_status', value='success')
+        print("Data extraction successful.")
+    except Exception as e:
+        print(f"Data extraction failed: {e}")
+        ti.xcom_push(key='task_status', value='failed')
 
 extract_api_data = PythonOperator(
     task_id='extract_api_data',

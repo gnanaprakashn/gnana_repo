@@ -21,7 +21,7 @@ dag = DAG(
 # Python function to check the XCom value for task status
 def check_openweather_api_status(**kwargs):
     ti = kwargs['ti']
-    task_status = ti.xcom_pull(dag_id='openweather_api_dag', task_ids='extract_api_data', key='task_status')
+    task_status = ti.xcom_pull(dag_id='openweather_api_dag1', task_ids='extract_api_data', key='task_status')
     
     if task_status == 'success':
         print("First DAG task completed successfully. Proceeding with Glue transformation.")

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume & Job Recommender</title>
+    <link rel="stylesheet" href="ui.css">
+</head>
+<body>
+    <div class="container">
+        <h2>AI Resume & Job Recommender</h2>
+        <form id="resumeJobForm">
+            
+            <h3>Personal Details</h3>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" required>
+
+            <h3>Education</h3>
+            <label for="college">College Name:</label>
+            <input type="text" id="college" required>
+
+            <label for="degree">Degree:</label>
+            <input type="text" id="degree" required>
+
+            <label for="year">Year of Graduation:</label>
+            <input type="text" id="year" required>
+
+            <h3>Work Experience</h3>
+            <div id="experienceContainer">
+                <div class="experienceEntry">
+                    <label>Company Name:</label>
+                    <input type="text" class="company" required>
+
+                    <label>Role:</label>
+                    <input type="text" class="role" required>
+
+                    <label>Duration:</label>
+                    <input type="text" class="duration" required>
+                </div>
+            </div>
+            <button type="button" id="addExperience">➕ Add Experience</button>
+
+            <label for="skills">Skills:</label>
+            <input type="text" id="skills" placeholder="Python, AWS, SQL" required>
+
+            <h3>Job Preferences</h3>
+            <label for="jobRole">Desired Job Role:</label>
+            <input type="text" id="jobRole" placeholder="Software Engineer, Data Scientist" required>
+
+            <label for="jobLocation">Preferred Job Location:</label>
+            <input type="text" id="jobLocation" placeholder="Remote, India, USA">
+
+            <label for="jobLinks">Job Links (if any):</label>
+            <input type="text" id="jobLinks" placeholder="LinkedIn, Indeed, etc.">
+
+            <button type="submit">Generate Resume & Get Jobs</button>
+        </form>
+    </div>
+
+    <!-- JavaScript should be placed at the end of the body -->
+    <script src="script.js"></script>
+</body>
+</html>
